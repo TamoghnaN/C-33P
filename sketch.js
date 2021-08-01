@@ -51,7 +51,7 @@ function setup() {
   fruit = Bodies.circle(100,400,15,fruit_options);
   World.add(world,fruit);
   
-  bubble = createSprite(290,460,20,20);
+  bubble = createSprite(290,490,20,20);
   bubble.addImage(bubble_img);
   bubble.scale = 0.1;
   
@@ -68,7 +68,7 @@ function setup() {
   bunny.addAnimation('crying',sad);
   bunny.changeAnimation('blinking');
 
-  rope = new Rope(4,{x:230,y:330});
+  rope = new Rope(6,{x:230,y:330});
   rope2 = new Rope(4,{x:50,y:450});
   con = new Link(rope,fruit);
   con2 = new Link(rope2,fruit);
@@ -77,9 +77,10 @@ function setup() {
   button = createImg('cut_btn.png');
   button.position(200,320);
   button.size(50,50);
+  button.mouseClicked(drop2);
 
   button2 = createImg('cut_btn.png');
-  button2.position(30,420);
+  button2.position(20,420);
   button2.size(50,50);
   button2.mouseClicked(drop);
 
@@ -129,6 +130,13 @@ function drop()
   rope2.break();
   con2.dettach();
   con2 = null; 
+}
+
+function drop2()
+{
+  rope.break();
+  con.dettach();
+  con = null; 
 }
 
 function remove_rope()
